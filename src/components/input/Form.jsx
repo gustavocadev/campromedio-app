@@ -19,7 +19,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
       <label className="dark:text-[#54A0FF]">{title}</label>
       <input
         type="text"
-        placeholder="5"
+        placeholder="0"
         className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313] mt-[8px]"
         name="inputGrade1"
         value={inputGrade1}
@@ -29,7 +29,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
       <label className="dark:text-[#54A0FF] pt-[24px]">{title}</label>
       <input
         type="text"
-        placeholder="15"
+        placeholder="0"
         className="px-[16px] py-[12px] rounded dark:bg-[#131313] dark:text-white  mt-[8px]"
         name="inputGrade2"
         value={inputGrade2}
@@ -39,7 +39,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
       <label className="dark:text-[#54A0FF]  pt-[24px]">{title}</label>
       <input
         type="text"
-        placeholder="10"
+        placeholder="0"
         className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
         name="inputGrade3"
         value={inputGrade3}
