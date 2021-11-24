@@ -1,7 +1,7 @@
 import React from "react";
 
 const Percent = ({ setCurrentPercent, currentPercent }) => {
-  const title = "Ingrese el porcentaje";
+  // const title = "Ingresa el porcentaje";
 
   // Destructuring CurrentPercent
   const { inputPercent1, inputPercent2, inputPercent3 } = currentPercent;
@@ -17,7 +17,7 @@ const Percent = ({ setCurrentPercent, currentPercent }) => {
   return (
     <>
       <form className="flex flex-col">
-        <label className="dark:text-[#54A0FF]">{title}</label>
+        <label className="dark:text-[#54A0FF]">Porcentaje Proc.1</label>
         <input
           type="text"
           placeholder="40"
@@ -27,7 +27,9 @@ const Percent = ({ setCurrentPercent, currentPercent }) => {
           value={inputPercent1}
         />
 
-        <label className="dark:text-[#54A0FF] pt-[24px]">{title}</label>
+        <label className="dark:text-[#54A0FF] pt-[24px]">
+          Porcentaje Conc.1
+        </label>
         <input
           type="text"
           placeholder="50"
@@ -37,7 +39,9 @@ const Percent = ({ setCurrentPercent, currentPercent }) => {
           value={inputPercent2}
         />
 
-        <label className="dark:text-[#54A0FF]  pt-[24px]">{title}</label>
+        <label className="dark:text-[#54A0FF]  pt-[24px]">
+          Porcentaje Acti.1
+        </label>
         <input
           type="text"
           placeholder="10"

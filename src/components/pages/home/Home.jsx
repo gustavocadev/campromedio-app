@@ -12,9 +12,9 @@ const Home = () => {
   };
 
   const initialPercents = JSON.parse(localStorage.getItem("percents")) || {
-    inputPercent1: "",
-    inputPercent2: "",
-    inputPercent3: "",
+    inputPercent1: 40,
+    inputPercent2: 50,
+    inputPercent3: 10,
   };
 
   // Hooks
