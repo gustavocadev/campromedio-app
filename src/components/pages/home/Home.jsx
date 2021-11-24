@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import calcGrade from "../../../helpers/calcGrade.jsx";
+import showMessageGrade from "../../../helpers/showMessageGrade.jsx";
 import Form from "../../input/Form.jsx";
 import Percent from "../../input/Percent.jsx";
 
@@ -28,6 +29,9 @@ const Home = () => {
 
   const { inputPercent1, inputPercent2, inputPercent3 } = currentPercent;
 
+  // Estado del mensaje
+  const [messageGrade, setMessageGrade] = useState("");
+
   useEffect(() => {
     localStorage.setItem("grades", JSON.stringify(currentGrades));
   }, [currentGrades]);
@@ -46,7 +50,9 @@ const Home = () => {
       inputPercent2,
       inputPercent3
     );
+    // Actualizamos el estado de la nota
     setFinalGrade(answer);
+
     // console.log("again because button changes");
   }, [button]);
 
@@ -55,6 +61,11 @@ const Home = () => {
     e.preventDefault();
     setButton(!button);
   };
+
+  useEffect(() => {
+    // Cambiamos el estado del mensaje
+    setMessageGrade(showMessageGrade(finalGrade));
+  }, [finalGrade]);
 
   return (
     <>
@@ -101,6 +112,7 @@ const Home = () => {
                     {" "}
                     {finalGrade.toFixed(1)}
                   </p>
+                  <p className="font-semibold text-[18px]">{messageGrade}</p>
                 </span>
               </div>
             </div>
