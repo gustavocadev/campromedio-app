@@ -73,7 +73,7 @@ const Home = () => {
 
   return (
     <>
-      <h1 className="font-bold text-[32px] text-[#FF4D4D] dark:text-[#E66767] mb-4 mt-6">
+      <h1 className="font-bold text-[32px] text-[#FF4D4D] dark:text-[#E66767] my-4">
         Promedios
       </h1>
       <main className="grid grid-cols-1 grid-rows-2 gap-4 text-black md:grid-cols-2 md:grid-rows-1">

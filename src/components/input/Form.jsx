@@ -20,6 +20,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
       <input
         type="number"
         placeholder="--"
+        autocomplete="off"
         className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313] mt-[8px]"
         name="inputGrade1"
         value={inputGrade1}
@@ -30,6 +31,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
       <input
         type="number"
         placeholder="--"
+        autocomplete="off"
         className="px-[16px] py-[12px] rounded dark:bg-[#131313] dark:text-white  mt-[8px]"
         name="inputGrade2"
         value={inputGrade2}
@@ -40,6 +42,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
       <input
         type="number"
         placeholder="--"
+        autocomplete="off"
         className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
         name="inputGrade3"
         value={inputGrade3}
