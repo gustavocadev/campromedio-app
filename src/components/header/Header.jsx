@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="h-[97px]">
       <nav className="flex flex-col items-center justify-between h-full md:flex-row">
-        <figure className="w-full sm:w-[450px]">
+        <figure className="w-full sm:w-[450px] my-2 sm:m-0">
           <img src={math2} alt="Logo-Cam-Promedio" />
         </figure>
         <ul className="flex m-2 sm:m-0">

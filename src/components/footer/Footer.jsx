@@ -13,7 +13,7 @@ const Footer = () => {
         CAMPROMEDIO &copy; 2021
       </h3>
       {pathname === "/" ? (
-        <figure className="absolute bottom-[-400px] sm:bottom-0 right-0">
+        <figure className="absolute bottom-0 right-0">
           <img
             src={homeBuho}
             alt="Buho con varita magica"

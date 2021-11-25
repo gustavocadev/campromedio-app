@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 // import { useLocation } from "react-router-dom";
 import calcGrade from "../../../helpers/calcGrade.jsx";
-import showMessageGrade from "../../../helpers/showMessageGrade.jsx";
+import showMessageGrade from "../../../helpers/showGradeMessage.jsx";
 import Form from "../../input/Form.jsx";
 import Percent from "../../input/Percent.jsx";
+import ColorBlock from "./ColorBlock.jsx";
 
 const Home = () => {
   // const { pathname } = useLocation();
@@ -99,27 +100,11 @@ const Home = () => {
           </button>
         </section>
         <section className="relative">
-          {finalGrade !== 0 && (
-            <div
-              className={`absolute top-0 bottom-0 left-0 right-0 rounded-lg ${
-                finalGrade >= 10.5 ? "bg-[#9de567]" : "bg-red-500"
-              }`}
-            >
-              <div className="flex items-center justify-center h-full">
-                <span className="text-center">
-                  <p className="font-semibold text-[40px] uppercase">
-                    {finalGrade >= 10.5 ? "¡Aprobaste!" : "¡REPROBASTE!"}
-                  </p>
-                  <p className="font-semibold text-[18px]">Tu nota final es:</p>
-                  <p className="font-semibold text-[64px]">
-                    {" "}
-                    {finalGrade.toFixed(1)}
-                  </p>
-                  <p className="font-semibold text-[18px]">{messageGrade}</p>
-                </span>
-              </div>
-            </div>
-          )}
+          <ColorBlock
+            finalGrade={finalGrade}
+            messageGrade={messageGrade}
+            currentGrades={currentGrades}
+          />
         </section>
       </main>
     </>

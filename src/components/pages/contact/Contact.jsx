@@ -44,7 +44,7 @@ const Contact = () => {
               Nombre del Profesor
             </th>
             <th className="p-4 text-xl font-bold text-black border border-black whitespace-nowrap">
-              Telefono
+              Teléfono
             </th>
             <th className="p-4 text-xl font-bold text-black border border-black whitespace-nowrap">
               Gmail
