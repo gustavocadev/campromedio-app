@@ -19,7 +19,7 @@ const Percent = ({ setCurrentPercent, currentPercent }) => {
       <form className="flex flex-col">
         <label className="dark:text-[#54A0FF]">Porcentaje Proc.1</label>
         <input
-          type="text"
+          type="number"
           placeholder="40"
           className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
           name="inputPercent1"
@@ -31,7 +31,7 @@ const Percent = ({ setCurrentPercent, currentPercent }) => {
           Porcentaje Conc.1
         </label>
         <input
-          type="text"
+          type="number"
           placeholder="50"
           className="px-[16px] py-[12px] rounded dark:bg-[#131313] dark:text-white  mt-[8px]"
           name="inputPercent2"
@@ -43,7 +43,7 @@ const Percent = ({ setCurrentPercent, currentPercent }) => {
           Porcentaje Acti.1
         </label>
         <input
-          type="text"
+          type="number"
           placeholder="10"
           className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
           name="inputPercent3"

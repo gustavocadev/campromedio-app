@@ -18,7 +18,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
     <form className="flex flex-col">
       <label className="dark:text-[#54A0FF]">{title}</label>
       <input
-        type="text"
+        type="number"
         placeholder="--"
         className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313] mt-[8px]"
         name="inputGrade1"
@@ -28,7 +28,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
 
       <label className="dark:text-[#54A0FF] pt-[24px]">{title}</label>
       <input
-        type="text"
+        type="number"
         placeholder="--"
         className="px-[16px] py-[12px] rounded dark:bg-[#131313] dark:text-white  mt-[8px]"
         name="inputGrade2"
@@ -38,7 +38,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
 
       <label className="dark:text-[#54A0FF]  pt-[24px]">{title}</label>
       <input
-        type="text"
+        type="number"
         placeholder="--"
         className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
         name="inputGrade3"

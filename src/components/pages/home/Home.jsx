@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+// import { useLocation } from "react-router-dom";
 import calcGrade from "../../../helpers/calcGrade.jsx";
 import showMessageGrade from "../../../helpers/showMessageGrade.jsx";
 import Form from "../../input/Form.jsx";
 import Percent from "../../input/Percent.jsx";
 
 const Home = () => {
+  // const { pathname } = useLocation();
+
   const initialGrades = JSON.parse(localStorage.getItem("grades")) || {
     inputGrade1: "",
     inputGrade2: "",
@@ -69,7 +72,7 @@ const Home = () => {
 
   return (
     <>
-      <h1 className="font-bold text-[32px] text-[#FF4D4D] dark:text-[#E66767] my-4">
+      <h1 className="font-bold text-[32px] text-[#FF4D4D] dark:text-[#E66767] mb-4 mt-6">
         Promedios
       </h1>
       <main className="grid grid-cols-1 grid-rows-2 gap-4 text-black md:grid-cols-2 md:grid-rows-1">
@@ -99,7 +102,7 @@ const Home = () => {
           {finalGrade !== 0 && (
             <div
               className={`absolute top-0 bottom-0 left-0 right-0 rounded-lg ${
-                finalGrade >= 10.5 ? "bg-green-600" : "bg-red-500"
+                finalGrade >= 10.5 ? "bg-[#9de567]" : "bg-red-500"
               }`}
             >
               <div className="flex items-center justify-center h-full">
