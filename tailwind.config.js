@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
-  mode: "jit",
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {},
@@ -8,9 +7,6 @@ module.exports = {
     //   'display': ['Oswald', ],
     //   'body': ['"Open Sans"',]
     //  }
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
