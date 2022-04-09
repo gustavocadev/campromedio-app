@@ -1,26 +1,29 @@
-import React from "react";
+import { ChangeEvent, useContext } from "react"
+import { GradeContext } from "../../context"
 
-const Form = ({ currentGrades, setCurrentGrades }) => {
-  const title = "Tu nota";
+const Form = () => {
+  const title = "Tu nota"
+
+  const { currentGrades, setCurrentGrades } = useContext(GradeContext)
 
   // destructuring
-  const { inputGrade1, inputGrade2, inputGrade3 } = currentGrades;
+  const { inputGrade1, inputGrade2, inputGrade3 } = currentGrades
 
   // handle change is to watch everytime the inputs change
-  const handleChange = (e) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setCurrentGrades({
       ...currentGrades,
-      [e.target.name]: e.target.value,
-    });
-  };
+      [target.name]: target.valueAsNumber,
+    })
+  }
 
   return (
-    <form className="flex flex-col">
+    <section className="flex flex-col">
       <label className="dark:text-[#54A0FF]">{title}</label>
       <input
         type="number"
         placeholder="--"
-        autocomplete="off"
+        autoComplete="off"
         className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313] mt-[8px]"
         name="inputGrade1"
         value={inputGrade1}
@@ -31,7 +34,7 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
       <input
         type="number"
         placeholder="--"
-        autocomplete="off"
+        autoComplete="off"
         className="px-[16px] py-[12px] rounded dark:bg-[#131313] dark:text-white  mt-[8px]"
         name="inputGrade2"
         value={inputGrade2}
@@ -42,14 +45,14 @@ const Form = ({ currentGrades, setCurrentGrades }) => {
       <input
         type="number"
         placeholder="--"
-        autocomplete="off"
+        autoComplete="off"
         className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
         name="inputGrade3"
         value={inputGrade3}
         onChange={handleChange}
       />
-    </form>
-  );
-};
+    </section>
+  )
+}
 
-export default Form;
+export default Form

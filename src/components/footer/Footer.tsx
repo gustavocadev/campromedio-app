@@ -1,11 +1,9 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import homeBuho from "../../assets/img/homeBuho.png";
-import contactoBuho from "../../assets/img/contactoBuho.png";
+import { useLocation } from "react-router-dom"
+// import contactoBuho from "../../assets/img/contactoBuho.png"
 
 const Footer = () => {
-  const { pathname } = useLocation();
-  console.log(pathname);
+  const { pathname } = useLocation()
+  // console.log(pathname)
   return (
     <footer className="mt-[10px] ">
       <header className="flex justify-center">
@@ -15,7 +13,7 @@ const Footer = () => {
       </header>
 
       <figure className="flex justify-end mt-[-94px] mr-[-80px] relative z-50">
-        {pathname === "/" ? (
+        {/* {pathname === "/" ? (
           <img
             src={homeBuho}
             alt="Buho con varita magica"
@@ -27,10 +25,18 @@ const Footer = () => {
             alt="Buho con su celular"
             className="w-[200px] mt-[-138px]"
           />
+        )} */}
+
+        {pathname === "/" && (
+          <img
+            src="/img/homeBuho.png"
+            alt="Buho con varita magica"
+            className="w-[233px] mt-[-208px]"
+          />
         )}
       </figure>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

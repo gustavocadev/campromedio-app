@@ -1,22 +1,25 @@
-import React from "react";
+import { useContext, ChangeEvent } from "react"
+import { GradeContext } from "../../context"
 
-const Percent = ({ setCurrentPercent, currentPercent }) => {
+type Props = {}
+
+const Percent = ({}: Props) => {
   // const title = "Ingresa el porcentaje";
-
+  const { setCurrentPercent, currentPercent } = useContext(GradeContext)
   // Destructuring CurrentPercent
-  const { inputPercent1, inputPercent2, inputPercent3 } = currentPercent;
+  const { inputPercent1, inputPercent2, inputPercent3 } = currentPercent
 
   // handle change is to watch everytime the inputs change
-  const handleChange = (e) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setCurrentPercent({
       ...currentPercent,
-      [e.target.name]: e.target.value,
-    });
-  };
+      [target.name]: target.valueAsNumber,
+    })
+  }
 
   return (
     <>
-      <form className="flex flex-col">
+      <section className="flex flex-col">
         <label className="dark:text-[#54A0FF]">Porcentaje Proc.1</label>
         <input
           type="number"
@@ -50,9 +53,9 @@ const Percent = ({ setCurrentPercent, currentPercent }) => {
           onChange={handleChange}
           value={inputPercent3}
         />
-      </form>
+      </section>
     </>
-  );
-};
+  )
+}
 
-export default Percent;
+export default Percent

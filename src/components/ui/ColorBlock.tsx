@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
-import asignColorBlock from "../../../helpers/asignColorBlock";
+import { useState, useEffect } from "react"
+import asignColorBlock from "../../helpers/asignColorBlock"
+import { useContext } from "react"
+import { GradeContext } from "../../context"
 
-const ColorBlock = ({ finalGrade, messageGrade, currentGrades }) => {
+const ColorBlock = () => {
+  const { finalGrade, messageGrade, currentGrades } = useContext(GradeContext)
   // Distructuring
-  const { inputGrade1, inputGrade2, inputGrade3 } = currentGrades;
-  const [error, setError] = useState(false);
+  const { inputGrade1, inputGrade2, inputGrade3 } = currentGrades
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     if (
@@ -17,11 +20,11 @@ const ColorBlock = ({ finalGrade, messageGrade, currentGrades }) => {
       finalGrade <= 20 &&
       finalGrade >= 0
     ) {
-      setError(false);
+      setError(false)
     } else {
-      setError(true);
+      setError(true)
     }
-  }, [finalGrade]);
+  }, [finalGrade])
   return (
     <div>
       {finalGrade !== 0 ? (
@@ -66,7 +69,7 @@ const ColorBlock = ({ finalGrade, messageGrade, currentGrades }) => {
           <div className="flex items-center justify-center h-full">
             <p className="font-semibold text-[40px] text-center">
               <span className="block font-bold text-blue-900">
-                Bienvenid@ a Campromedio!!!
+                ¡Bienvenid@ a Campromedio!
               </span>
               Lugar donde puedes calcular tus promedios de forma segura.
             </p>
@@ -74,7 +77,7 @@ const ColorBlock = ({ finalGrade, messageGrade, currentGrades }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ColorBlock;
+export default ColorBlock
