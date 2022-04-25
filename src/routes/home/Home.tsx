@@ -1,10 +1,10 @@
-import { useContext, useEffect, FormEvent } from "react"
-import calcGrade from "../../helpers/calcGrade"
-import showMessageGrade from "../../helpers/showGradeMessage"
-import Form from "../../components/input/Form"
-import Percent from "../../components/input/Percent"
-import ColorBlock from "../../components/ui/ColorBlock"
-import { GradeContext } from "../../context/GradeContext"
+import { useContext, useEffect, FormEvent } from "react";
+import calcGrade from "../../helpers/calcGrade";
+import showMessageGrade from "../../helpers/showGradeMessage";
+import Form from "../../components/input/Form";
+import Percent from "../../components/input/Percent";
+import ColorBlock from "../../components/ui/ColorBlock";
+import { GradeContext } from "../../context/GradeContext";
 
 const Home = () => {
   const {
@@ -15,48 +15,51 @@ const Home = () => {
     finalGrade,
     setFinalGrade,
     setMessageGrade,
-  } = useContext(GradeContext)
+  } = useContext(GradeContext);
 
-  const { inputGrade1, inputGrade2, inputGrade3 } = currentGrades
-  const { inputPercent1, inputPercent2, inputPercent3 } = currentPercent
-
-  // get initial state from local storage
-  useEffect(() => {
-    const initialGrades = JSON.parse(localStorage.getItem("grades") ?? "{}")
-    setCurrentGrades(initialGrades)
-  }, [])
+  const { inputGrade1, inputGrade2, inputGrade3 } = currentGrades;
+  const { inputPercent1, inputPercent2, inputPercent3 } = currentPercent;
 
   // get initial state from local storage
   useEffect(() => {
-    const initialPercents = JSON.parse(localStorage.getItem("percents") ?? "{}")
-    setCurrentPercent(initialPercents)
-  }, [])
+    const initialGrades = JSON.parse(localStorage.getItem("grades") ?? "{}");
+    setCurrentGrades(initialGrades);
+  }, []);
+
+  // get initial state from local storage
+  useEffect(() => {
+    const initialPercents = JSON.parse(localStorage.getItem("percents")!) ?? {
+      ...currentPercent,
+    };
+    setCurrentPercent(initialPercents);
+  }, []);
 
   // next, we need to watch everytime the inputs change
   useEffect(() => {
-    localStorage.setItem("grades", JSON.stringify(currentGrades))
-  }, [currentGrades])
+    localStorage.setItem("grades", JSON.stringify(currentGrades));
+  }, [currentGrades]);
 
   // next, we need to watch everytime the inputs change
   useEffect(() => {
-    localStorage.setItem("percents", JSON.stringify(currentPercent))
-  }, [currentPercent])
+    localStorage.setItem("percents", JSON.stringify(currentPercent));
+  }, [currentPercent]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const answer = calcGrade(
+    e.preventDefault();
+    const answer = calcGrade({
       inputGrade1,
       inputGrade2,
       inputGrade3,
       inputPercent1,
       inputPercent2,
-      inputPercent3
-    )
-    // Actualizamos el estado de la nota
-    setFinalGrade(answer)
+      inputPercent3,
+    });
+    const msg = showMessageGrade(answer);
 
-    setMessageGrade(showMessageGrade(finalGrade)!)
-  }
+    // Actualizamos el estado de la nota
+    setFinalGrade(answer);
+    setMessageGrade(msg);
+  };
 
   return (
     <>
@@ -82,7 +85,7 @@ const Home = () => {
         </section>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

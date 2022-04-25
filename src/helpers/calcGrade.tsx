@@ -1,18 +1,27 @@
-// function to know the answer
-const calcGrade = (
-  grade1: number,
-  grade2: number,
-  grade3: number,
-  percent1: number,
-  percent2: number,
-  percent3: number
-) => {
-  const res =
-    grade1 * (percent1 / 100) +
-    grade2 * (percent2 / 100) +
-    grade3 * (percent3 / 100)
-  // console.log(res);
-  return res
-}
+type GrandesAndPercents = {
+  inputGrade1: number;
+  inputGrade2: number;
+  inputGrade3: number;
+  inputPercent1: number;
+  inputPercent2: number;
+  inputPercent3: number;
+};
 
-export default calcGrade
+// function to know the answer
+const calcGrade = ({
+  inputGrade1,
+  inputGrade2,
+  inputGrade3,
+  inputPercent1,
+  inputPercent2,
+  inputPercent3,
+}: GrandesAndPercents) => {
+  const res =
+    inputGrade1 * (inputPercent1 / 100) +
+    inputGrade2 * (inputPercent2 / 100) +
+    inputGrade3 * (inputPercent3 / 100);
+  // console.log(res);
+  return res;
+};
+
+export default calcGrade;
