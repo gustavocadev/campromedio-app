@@ -1,35 +1,36 @@
-import { useContext, type FormEvent } from 'react';
+import { useContext, useEffect, type FormEvent } from 'react';
 import Form from '~/components/input/Form';
 import ColorBlock from '~/components/ui/ColorBlock';
 import { GradeContext } from '~/context/GradeContext';
 import showMessageGrade from '~/helpers/showGradeMessage';
 
 const Home = () => {
-  const { units, setMessageGrade, setFinalGrade } = useContext(GradeContext);
+  const {
+    units,
+    setMessageGrade,
+    setFinalGrade,
+    getInitialUnits,
+    setInitialUnits,
+  } = useContext(GradeContext);
 
   // get initial state from local storage
-  // useEffect(() => {
-  //   const initialGrades = JSON.parse(localStorage.getItem('grades') ?? '{}');
-  //   setCurrentGrades(initialGrades);
-  // }, []);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: This is the initial state, there is no need to watch it
+  useEffect(() => {
+    const initialUnits = localStorage.getItem('units');
 
-  // // get initial state from local storage
-  // useEffect(() => {
-  //   const initialPercents = JSON.parse(localStorage.getItem('percents')!) ?? {
-  //     ...currentPercent,
-  //   };
-  //   setCurrentPercent(initialPercents);
-  // }, []);
+    if (!initialUnits) {
+      setInitialUnits(getInitialUnits());
+      localStorage.setItem('units', JSON.stringify(getInitialUnits()));
+      return;
+    }
+
+    setInitialUnits(JSON.parse(initialUnits));
+  }, []);
 
   // next, we need to watch everytime the inputs change
-  // useEffect(() => {
-  //   localStorage.setItem('grades', JSON.stringify(currentGrades));
-  // }, [currentGrades]);
-
-  // // next, we need to watch everytime the inputs change
-  // useEffect(() => {
-  //   localStorage.setItem('percents', JSON.stringify(currentPercent));
-  // }, [currentPercent]);
+  useEffect(() => {
+    localStorage.setItem('units', JSON.stringify(units));
+  }, [units]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
