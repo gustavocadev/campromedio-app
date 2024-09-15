@@ -64,7 +64,7 @@ const ColorBlock = () => {
         </div>
       )}
 
-      <figure className="flex justify-end bottom-0 right-0 lg:-right-20 absolute z-50">
+      <figure className="hidden bottom-0 right-0 lg:-right-20 md:block absolute z-50">
         <img
           src="/img/homeBuho.png"
           alt="Buho con varita magica"
