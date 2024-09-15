@@ -8,6 +8,9 @@ type ContextProps = {
   setGradesByUnit: (unit: number, grades: Grade) => void;
   messageGrade: string;
   setMessageGrade: (value: string) => void;
+  setInitialUnits: (units: Unit[]) => void;
+
+  getInitialUnits: () => Unit[];
 };
 
 export const GradeContext = createContext({} as ContextProps);
