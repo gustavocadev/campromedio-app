@@ -73,7 +73,7 @@ const Home = () => {
             Calcular nota
           </button>
         </form>
-        <section className="relative md:flex-1 sm:w-full">
+        <section className="relative md:flex-1">
           <ColorBlock />
         </section>
       </main>
