@@ -1,57 +1,94 @@
-import { useReducer } from "react";
-import { CurrentPercentageType, GradeCurrentType } from "../types/types";
-import { GradeContext, gradeReducer } from "./";
+import { useReducer } from 'react';
+import type { Grade, Unit } from '~/types/types';
+import { GradeContext, gradeReducer } from './';
 
 export type GradeState = {
   finalGrade: number;
-  currentGrades: GradeCurrentType;
-  currentPercent: CurrentPercentageType;
+  units: Unit[];
   messageGrade: string;
 };
 
 const GRADE_INITIAL_STATE: GradeState = {
   finalGrade: 0,
-  currentGrades: {
-    inputGrade1: 0,
-    inputGrade2: 0,
-    inputGrade3: 0,
-  },
-  currentPercent: {
-    inputPercent1: 40,
-    inputPercent2: 50,
-    inputPercent3: 10,
-  },
-  messageGrade: "",
+  units: [
+    {
+      unit: 1,
+      grades: [
+        {
+          grade: 0,
+          type: 'procedimental',
+        },
+        {
+          grade: 0,
+          type: 'actitudinal',
+        },
+        {
+          grade: 0,
+          type: 'conceptual',
+        },
+      ],
+    },
+    {
+      unit: 2,
+      grades: [
+        {
+          grade: 0,
+          type: 'procedimental',
+        },
+        {
+          grade: 0,
+          type: 'actitudinal',
+        },
+        {
+          grade: 0,
+          type: 'conceptual',
+        },
+      ],
+    },
+  ],
+
+  messageGrade: '',
 };
 
-const GradeProvider = ({ children }: { children: JSX.Element }) => {
+export const GradeProvider = ({ children }: { children: JSX.Element }) => {
   const [state, dispatch] = useReducer(gradeReducer, GRADE_INITIAL_STATE);
 
   // actions
   const setFinalGrade = (finalGrade: number) => {
     dispatch({
-      type: "SET_FINAL_GRADE",
+      type: 'SET_FINAL_GRADE',
       payload: finalGrade,
     });
   };
 
-  const setCurrentGrades = (currentGrades: GradeCurrentType) => {
+  const setGradesByUnit = (unit: number, grade: Grade) => {
+    const units = state.units.map((u) => {
+      if (u.unit !== unit) return u;
+
+      const grades = u.grades.map((g) => {
+        if (g.type !== grade.type) return g;
+
+        return {
+          ...grade,
+        };
+      });
+
+      return {
+        ...u,
+        grades: grades,
+      };
+    });
+
     dispatch({
-      type: "SET_CURRENT_GRADES",
-      payload: currentGrades,
+      type: 'SET_GRADES_BY_UNIT',
+      payload: units,
     });
   };
 
-  const setCurrentPercent = (currentPercent: CurrentPercentageType) => {
-    dispatch({
-      type: "SET_CURRENT_PERCENT",
-      payload: currentPercent,
-    });
-  };
   // Estado del mensaje
   const setMessageGrade = (messageGrade: string) => {
     dispatch({
-      type: "SET_MESSAGE_GRADE",
+      type: 'SET_MESSAGE_GRADE',
       payload: messageGrade,
     });
   };
@@ -60,8 +97,7 @@ const GradeProvider = ({ children }: { children: JSX.Element }) => {
       value={{
         ...state,
         setFinalGrade,
-        setCurrentGrades,
-        setCurrentPercent,
+        setGradesByUnit,
         setMessageGrade,
       }}
     >
@@ -69,4 +105,3 @@ const GradeProvider = ({ children }: { children: JSX.Element }) => {
     </GradeContext.Provider>
   );
 };
-export { GradeProvider };

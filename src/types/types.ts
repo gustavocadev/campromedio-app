@@ -1,11 +1,17 @@
 export type GradeCurrentType = {
-  inputGrade1: number
-  inputGrade2: number
-  inputGrade3: number
-}
+  inputGrade1: number;
+  inputGrade2: number;
+  inputGrade3: number;
+};
 
-export type CurrentPercentageType = {
-  inputPercent1: number
-  inputPercent2: number
-  inputPercent3: number
-}
+export type Grade = {
+  grade: number;
+  type: GradeType;
+};
+
+export type GradeType = 'procedimental' | 'actitudinal' | 'conceptual';
+
+export type Unit = {
+  unit: number;
+  grades: Grade[];
+};

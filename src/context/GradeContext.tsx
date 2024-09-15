@@ -1,15 +1,13 @@
-import { createContext } from "react"
-import { CurrentPercentageType, GradeCurrentType } from "../types/types"
+import { createContext } from 'react';
+import type { Grade, Unit } from '~/types/types';
 
 type ContextProps = {
-  finalGrade: number
-  currentGrades: GradeCurrentType
-  currentPercent: CurrentPercentageType
-  setFinalGrade: (value: number) => void
-  setCurrentGrades: (value: GradeCurrentType) => void
-  setCurrentPercent: (value: CurrentPercentageType) => void
-  messageGrade: string
-  setMessageGrade: (value: string) => void
-}
+  finalGrade: number;
+  units: Unit[];
+  setFinalGrade: (value: number) => void;
+  setGradesByUnit: (unit: number, grades: Grade) => void;
+  messageGrade: string;
+  setMessageGrade: (value: string) => void;
+};
 
-export const GradeContext = createContext({} as ContextProps)
+export const GradeContext = createContext({} as ContextProps);

@@ -1,58 +1,102 @@
-import { ChangeEvent, useContext } from "react"
-import { GradeContext } from "../../context"
+import { useContext, useMemo, type ChangeEvent } from 'react';
+import { GradeContext } from '~/context';
+import calcGrade from '~/helpers/calcGrade';
+import type { GradeType, Unit } from '~/types/types';
 
-const Form = () => {
-  const title = "Tu nota"
+type Props = {
+  unit: Unit;
+};
 
-  const { currentGrades, setCurrentGrades } = useContext(GradeContext)
+const Form = ({ unit }: Props) => {
+  const title = 'Tu nota';
 
-  // destructuring
-  const { inputGrade1, inputGrade2, inputGrade3 } = currentGrades
+  const { setGradesByUnit } = useContext(GradeContext);
 
   // handle change is to watch everytime the inputs change
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setCurrentGrades({
-      ...currentGrades,
-      [target.name]: target.valueAsNumber,
-    })
-  }
+    const targetName = target.name as GradeType;
+
+    setGradesByUnit(unit.unit, {
+      grade: target.valueAsNumber,
+      type: targetName,
+    });
+  };
+
+  const calcGradeOfTheUnit = useMemo(() => {
+    const grade = calcGrade({
+      inputGrade1: unit.grades[0].grade,
+      inputGrade2: unit.grades[1].grade,
+      inputGrade3: unit.grades[2].grade,
+    });
+    return grade.toFixed(2);
+  }, [unit]);
 
   return (
-    <section className="flex flex-col">
-      <label className="dark:text-[#54A0FF]">{title}</label>
-      <input
-        type="number"
-        placeholder="--"
-        autoComplete="off"
-        className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313] mt-[8px]"
-        name="inputGrade1"
-        value={inputGrade1}
-        onChange={handleChange}
-      />
+    <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
+      <section className="flex flex-col flex-1 w-full">
+        <h2>
+          <span className="text-gray-200 text-lg font-semibold">
+            Unidad {unit.unit}
+          </span>
+        </h2>
+        <label className="dark:text-[#54A0FF]" htmlFor="procedimental">
+          {title}{' '}
+          <span className="capitalize font-semibold text-purple-300">
+            ({unit.grades[0].type} 40%)
+          </span>
+        </label>
+        <input
+          type="number"
+          id="procedimental"
+          placeholder="--"
+          autoComplete="off"
+          className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313] mt-[8px]"
+          name={unit.grades[0].type}
+          value={unit.grades[0].grade}
+          onChange={handleChange}
+        />
 
-      <label className="dark:text-[#54A0FF] pt-[24px]">{title}</label>
-      <input
-        type="number"
-        placeholder="--"
-        autoComplete="off"
-        className="px-[16px] py-[12px] rounded dark:bg-[#131313] dark:text-white  mt-[8px]"
-        name="inputGrade2"
-        value={inputGrade2}
-        onChange={handleChange}
-      />
+        <label className="dark:text-[#54A0FF] pt-[24px]" htmlFor="conceptual">
+          {title}{' '}
+          <span className="capitalize font-semibold text-purple-300">
+            ({unit.grades[1].type} 50%)
+          </span>
+        </label>
+        <input
+          type="number"
+          placeholder="--"
+          id="conceptual"
+          autoComplete="off"
+          className="px-[16px] py-[12px] rounded dark:bg-[#131313] dark:text-white  mt-[8px]"
+          name={unit.grades[1].type}
+          value={unit.grades[1].grade}
+          onChange={handleChange}
+        />
 
-      <label className="dark:text-[#54A0FF]  pt-[24px]">{title}</label>
-      <input
-        type="number"
-        placeholder="--"
-        autoComplete="off"
-        className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
-        name="inputGrade3"
-        value={inputGrade3}
-        onChange={handleChange}
-      />
-    </section>
-  )
-}
+        <label className="dark:text-[#54A0FF]  pt-[24px]" htmlFor="actitudinal">
+          {title}{' '}
+          <span className="capitalize font-semibold text-purple-300">
+            ({unit.grades[2].type} 10%)
+          </span>
+        </label>
+        <input
+          type="number"
+          placeholder="--"
+          id="actitudinal"
+          autoComplete="off"
+          className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
+          name={unit.grades[2].type}
+          value={unit.grades[2].grade}
+          onChange={handleChange}
+        />
+      </section>
 
-export default Form
+      <section className="bg-orange-400 flex-1 rounded px-4 text-center w-full p-8">
+        <h2 className="text-lg font-semibold">Tu nota final</h2>
+        <p className="text-[32px] font-semibold">{calcGradeOfTheUnit}</p>
+      </section>
+    </div>
+  );
+};
+
+export default Form;
