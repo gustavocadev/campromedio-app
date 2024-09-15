@@ -2,6 +2,9 @@ import { useContext, useMemo, type ChangeEvent } from 'react';
 import { GradeContext } from '~/context';
 import calcGrade from '~/helpers/calcGrade';
 import type { GradeType, Unit } from '~/types/types';
+import { Input } from '../ui/input';
+import { Card } from '../ui/card';
+import { Label } from '../ui/label';
 
 type Props = {
   unit: Unit;
@@ -32,70 +35,79 @@ const Form = ({ unit }: Props) => {
   }, [unit]);
 
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
-      <section className="flex flex-col flex-1 w-full h-full">
-        <h2>
-          <span className="text-gray-200 text-xl font-semibold uppercase">
-            Unidad {unit.unit}
-          </span>
-        </h2>
-        <label className="dark:text-[#54A0FF]" htmlFor="procedimental">
-          {title}{' '}
-          <span className="capitalize font-semibold text-purple-300">
-            ({unit.grades[0].type} 40%)
-          </span>
-        </label>
-        <input
-          type="number"
-          id="procedimental"
-          placeholder="--"
-          autoComplete="off"
-          className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313] mt-[8px]"
-          name={unit.grades[0].type}
-          value={unit.grades[0].grade}
-          onChange={handleChange}
-        />
+    <Card className="flex flex-col gap-4 justify-center p-4">
+      <h2>
+        <span className="dark:text-gray-200 text-xl font-semibold uppercase">
+          Unidad {unit.unit}
+        </span>
+      </h2>
+      <section className="flex flex-col 2xl:flex-row justify-between">
+        <div className="space-y-2">
+          <Label className="dark:text-[#54A0FF]" htmlFor="procedimental">
+            {title}{' '}
+            <span className="capitalize font-semibold dark:text-purple-300 text-purple-600">
+              ({unit.grades[0].type} 40%)
+            </span>
+          </Label>
+          <Input
+            type="number"
+            id="procedimental"
+            placeholder="--"
+            autoComplete="off"
+            className="dark:text-white dark:bg-[#131313]"
+            name={unit.grades[0].type}
+            value={unit.grades[0].grade}
+            onChange={handleChange}
+          />
+        </div>
 
-        <label className="dark:text-[#54A0FF] pt-[24px]" htmlFor="conceptual">
-          {title}{' '}
-          <span className="capitalize font-semibold text-purple-300">
-            ({unit.grades[1].type} 50%)
-          </span>
-        </label>
-        <input
-          type="number"
-          placeholder="--"
-          id="conceptual"
-          autoComplete="off"
-          className="px-[16px] py-[12px] rounded dark:bg-[#131313] dark:text-white  mt-[8px]"
-          name={unit.grades[1].type}
-          value={unit.grades[1].grade}
-          onChange={handleChange}
-        />
+        <div className="space-y-2">
+          <Label className="dark:text-[#54A0FF] pt-[24px]" htmlFor="conceptual">
+            {title}{' '}
+            <span className="capitalize font-semibold dark:text-purple-300 text-purple-600">
+              ({unit.grades[1].type} 50%)
+            </span>
+          </Label>
+          <Input
+            type="number"
+            placeholder="--"
+            id="conceptual"
+            autoComplete="off"
+            className="dark:text-white dark:bg-[#131313]"
+            name={unit.grades[1].type}
+            value={unit.grades[1].grade}
+            onChange={handleChange}
+          />
+        </div>
 
-        <label className="dark:text-[#54A0FF]  pt-[24px]" htmlFor="actitudinal">
-          {title}{' '}
-          <span className="capitalize font-semibold text-purple-300">
-            ({unit.grades[2].type} 10%)
-          </span>
-        </label>
-        <input
-          type="number"
-          placeholder="--"
-          id="actitudinal"
-          autoComplete="off"
-          className="px-[16px] py-[12px] rounded dark:text-white dark:bg-[#131313]  mt-[8px]"
-          name={unit.grades[2].type}
-          value={unit.grades[2].grade}
-          onChange={handleChange}
-        />
+        <div className="space-y-2">
+          <Label
+            className="dark:text-[#54A0FF]  pt-[24px]"
+            htmlFor="actitudinal"
+          >
+            {title}{' '}
+            <span className="capitalize font-semibold dark:text-purple-300 text-purple-600">
+              ({unit.grades[2].type} 10%)
+            </span>
+          </Label>
+          <Input
+            type="number"
+            placeholder="--"
+            id="actitudinal"
+            autoComplete="off"
+            className="dark:text-white dark:bg-[#131313]"
+            name={unit.grades[2].type}
+            value={unit.grades[2].grade}
+            onChange={handleChange}
+          />
+        </div>
       </section>
 
-      <section className="bg-orange-400 flex-1 rounded text-center w-full p-8 justify-center flex flex-col">
-        <h2 className="text-2xl font-semibold">Tu nota final:</h2>
+      <section className="text-center w-full p-2 dark:text-gray-200 space-y-2">
+        <h2 className="text-2xl font-semibold">Tu nota de unidad:</h2>
         <p className="text-3xl font-semibold">{calcGradeOfTheUnit}</p>
       </section>
-    </div>
+    </Card>
   );
 };
 
