@@ -58,8 +58,8 @@ const Home = () => {
       <h1 className="font-bold text-[32px] text-[#FF4D4D] dark:text-[#E66767] my-4">
         Calcular Promedios UNAM
       </h1>
-      <main className="grid grid-cols-1 grid-rows-2 gap-4 text-black md:grid-cols-2 md:grid-rows-1">
-        <form onSubmit={handleSubmit}>
+      <main className="flex flex-col md:flex-row text-black gap-8 h-full">
+        <form onSubmit={handleSubmit} className="md:flex-1">
           <div className="flex flex-col gap-[24px]">
             {units.map((unit) => (
               <Form unit={unit} key={unit.unit} />
@@ -73,7 +73,7 @@ const Home = () => {
             Calcular nota
           </button>
         </form>
-        <section className="relative">
+        <section className="relative md:flex-1 sm:w-full">
           <ColorBlock />
         </section>
       </main>
