@@ -41,7 +41,7 @@ const Form = ({ unit }: Props) => {
           Unidad {unit.unit}
         </span>
       </h2>
-      <section className="flex flex-col 2xl:flex-row justify-between">
+      <section className="flex flex-col 2xl:flex-row justify-between gap-4">
         <div className="space-y-2">
           <Label className="dark:text-[#54A0FF]" htmlFor="procedimental">
             {title}{' '}
