@@ -61,6 +61,52 @@ export const GradeProvider = ({ children }: { children: JSX.Element }) => {
     });
   };
 
+  const setInitialUnits = (units: Unit[]) => {
+    dispatch({
+      type: 'SET_INITIAL_UNITS',
+      payload: units,
+    });
+  };
+
+  const getInitialUnits = (): Unit[] => {
+    return [
+      {
+        unit: 1,
+        grades: [
+          {
+            grade: 0,
+            type: 'procedimental',
+          },
+          {
+            grade: 0,
+            type: 'actitudinal',
+          },
+          {
+            grade: 0,
+            type: 'conceptual',
+          },
+        ],
+      },
+      {
+        unit: 2,
+        grades: [
+          {
+            grade: 0,
+            type: 'procedimental',
+          },
+          {
+            grade: 0,
+            type: 'actitudinal',
+          },
+          {
+            grade: 0,
+            type: 'conceptual',
+          },
+        ],
+      },
+    ];
+  };
+
   const setGradesByUnit = (unit: number, grade: Grade) => {
     const units = state.units.map((u) => {
       if (u.unit !== unit) return u;
@@ -99,6 +145,8 @@ export const GradeProvider = ({ children }: { children: JSX.Element }) => {
         setFinalGrade,
         setGradesByUnit,
         setMessageGrade,
+        getInitialUnits,
+        setInitialUnits,
       }}
     >
       {children}
