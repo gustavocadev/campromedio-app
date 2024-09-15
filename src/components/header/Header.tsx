@@ -1,9 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useTheme } from '../theme-provider';
 import { ModeToggle } from '../mode-toggle';
 
 const Header = () => {
-  const { setTheme } = useTheme();
   return (
     <header className="h-[97px]">
       <nav className="flex flex-col items-center justify-between h-full md:flex-row">
