@@ -33,9 +33,9 @@ const Form = ({ unit }: Props) => {
 
   return (
     <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
-      <section className="flex flex-col flex-1 w-full">
+      <section className="flex flex-col flex-1 w-full h-full">
         <h2>
-          <span className="text-gray-200 text-lg font-semibold">
+          <span className="text-gray-200 text-xl font-semibold uppercase">
             Unidad {unit.unit}
           </span>
         </h2>
@@ -91,9 +91,9 @@ const Form = ({ unit }: Props) => {
         />
       </section>
 
-      <section className="bg-orange-400 flex-1 rounded px-4 text-center w-full p-8">
-        <h2 className="text-lg font-semibold">Tu nota final</h2>
-        <p className="text-[32px] font-semibold">{calcGradeOfTheUnit}</p>
+      <section className="bg-orange-400 flex-1 rounded text-center w-full p-8 justify-center flex flex-col">
+        <h2 className="text-2xl font-semibold">Tu nota final:</h2>
+        <p className="text-3xl font-semibold">{calcGradeOfTheUnit}</p>
       </section>
     </div>
   );
