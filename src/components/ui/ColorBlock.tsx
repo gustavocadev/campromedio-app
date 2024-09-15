@@ -18,7 +18,7 @@ const ColorBlock = () => {
     <Fragment>
       {finalGrade !== 0 ? (
         <div
-          className={`absolute top-0 bottom-0 left-0 right-0 rounded-lg ${asignColorBlock(
+          className={`absolute top-0 bottom-0 left-0 right-0 rounded-lg min-h-[500px] lg:h-auto ${asignColorBlock(
             finalGrade,
             error,
           )}`}
@@ -52,7 +52,7 @@ const ColorBlock = () => {
           </div>
         </div>
       ) : (
-        <div className="absolute top-0 bottom-0 left-0 right-0 rounded-lg bg-[#D9735B]">
+        <div className="absolute top-0 bottom-0 left-0 right-0 rounded-lg bg-[#D9735B] min-h-[500px] lg:h-auto">
           <div className="flex items-center justify-center h-full">
             <p className="font-semibold text-[40px] text-center">
               <span className="block font-bold text-blue-900">
