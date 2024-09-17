@@ -10,42 +10,7 @@ export type GradeState = {
 
 const GRADE_INITIAL_STATE: GradeState = {
   finalGrade: 0,
-  units: [
-    {
-      unit: 1,
-      grades: [
-        {
-          grade: 0,
-          type: 'procedimental',
-        },
-        {
-          grade: 0,
-          type: 'actitudinal',
-        },
-        {
-          grade: 0,
-          type: 'conceptual',
-        },
-      ],
-    },
-    {
-      unit: 2,
-      grades: [
-        {
-          grade: 0,
-          type: 'procedimental',
-        },
-        {
-          grade: 0,
-          type: 'actitudinal',
-        },
-        {
-          grade: 0,
-          type: 'conceptual',
-        },
-      ],
-    },
-  ],
+  units: [],
 
   messageGrade: '',
 };
@@ -79,11 +44,11 @@ export const GradeProvider = ({ children }: { children: JSX.Element }) => {
           },
           {
             grade: 0,
-            type: 'actitudinal',
+            type: 'conceptual',
           },
           {
             grade: 0,
-            type: 'conceptual',
+            type: 'actitudinal',
           },
         ],
       },
@@ -96,11 +61,11 @@ export const GradeProvider = ({ children }: { children: JSX.Element }) => {
           },
           {
             grade: 0,
-            type: 'actitudinal',
+            type: 'conceptual',
           },
           {
             grade: 0,
-            type: 'conceptual',
+            type: 'actitudinal',
           },
         ],
       },
