@@ -40,11 +40,11 @@ const Home = () => {
         (acc2, value2) => acc2 + value2.grade,
         0,
       );
-      return acc + gradesSum;
+      return acc + gradesSum / 3;
     }, 0);
 
     // the value 3 reprents the quantity of the grades per unit, I know, it can varible.
-    const finalGrade = finalGradesSum / (units.length * 3);
+    const finalGrade = Math.round(finalGradesSum) / units.length;
 
     const msg = showMessageGrade(finalGrade);
 
