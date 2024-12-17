@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { type JSX, useReducer } from 'react';
 import type { Grade, Unit } from '~/types/types';
 import { GradeContext, gradeReducer } from './';
 
