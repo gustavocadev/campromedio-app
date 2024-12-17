@@ -2,6 +2,7 @@ import { useContext, useEffect, type FormEvent } from 'react';
 import Form from '~/components/input/Form';
 import ColorBlock from '~/components/ui/ColorBlock';
 import { GradeContext } from '~/context/GradeContext';
+import calcGrade from '~/helpers/calcGrade';
 import showMessageGrade from '~/helpers/showGradeMessage';
 
 const Home = () => {
@@ -36,15 +37,18 @@ const Home = () => {
     e.preventDefault();
 
     const finalGradesSum = units.reduce((acc, value) => {
-      const gradesSum = value.grades.reduce(
-        (acc2, value2) => acc2 + value2.grade,
-        0,
+      return (
+        acc +
+        calcGrade({
+          inputGrade1: value.grades[0].grade,
+          inputGrade2: value.grades[1].grade,
+          inputGrade3: value.grades[2].grade,
+        })
       );
-      return acc + gradesSum / 3;
     }, 0);
 
     // the value 3 reprents the quantity of the grades per unit, I know, it can varible.
-    const finalGrade = Math.round(finalGradesSum) / units.length;
+    const finalGrade = finalGradesSum / units.length;
 
     const msg = showMessageGrade(finalGrade);
 
